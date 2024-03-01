@@ -11,9 +11,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.Collection;
 
-/**
- * TODO Sprint add-controllers.
- */
 @RestController
 @RequestMapping("/items")
 @Validated
