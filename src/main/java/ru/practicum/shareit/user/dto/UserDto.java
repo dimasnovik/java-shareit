@@ -2,6 +2,9 @@ package ru.practicum.shareit.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ru.practicum.shareit.validation.CreateInfo;
+import ru.practicum.shareit.validation.NullOrEmail;
+import ru.practicum.shareit.validation.UpdateInfo;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -10,9 +13,10 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class UserDto {
     private int id;
-    @NotBlank
+    @NotBlank(groups = CreateInfo.class)
     private String name;
-    @NotBlank
-    @Email
+    @NotBlank(groups = CreateInfo.class)
+    @Email(groups = CreateInfo.class)
+    @NullOrEmail(groups = UpdateInfo.class)
     private String email;
 }

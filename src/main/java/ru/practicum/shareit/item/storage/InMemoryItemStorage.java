@@ -1,6 +1,5 @@
 package ru.practicum.shareit.item.storage;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.practicum.shareit.item.model.Item;
 
@@ -11,7 +10,6 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Component
-@Slf4j
 public class InMemoryItemStorage implements ItemStorage {
     private final Map<Integer, Item> items = new HashMap<>();
     private int nextId = 1;
@@ -21,14 +19,12 @@ public class InMemoryItemStorage implements ItemStorage {
         item.setId(nextId);
         items.put(nextId, item);
         nextId++;
-        log.info("item id = {} added", item.getId());
         return item;
     }
 
     @Override
     public Item update(Item item) {
         int id = item.getId();
-        log.info("item id = {} updated", item.getId());
         return items.put(id, item);
     }
 
@@ -47,7 +43,6 @@ public class InMemoryItemStorage implements ItemStorage {
     @Override
     public void deleteById(int id) {
         items.remove(id);
-        log.info("item id = {} removed", id);
     }
 
     @Override
